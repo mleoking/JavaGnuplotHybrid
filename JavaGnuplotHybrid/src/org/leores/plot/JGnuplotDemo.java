@@ -134,7 +134,7 @@ public class JGnuplotDemo extends Demo {
 		double[] x = { 1, 2, 3, 4, 5 }, y1 = { 2, 4, 6, 8, 10 }, y2 = { 3, 6, 9, 12, 15 };
 		DataTableSet dts = plot0.addNewDataTableSet("Simple plot");
 		dts.addNewDataTable("2x", x, y1);
-		dts.addNewDataTable("3x test", x, y2);
+		dts.addNewDataTable("3x", x, y2);
 		jg.execute(plot0, jg.plot2d);
 	}
 
