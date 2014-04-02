@@ -1,0 +1,33 @@
+ -7 down vote favorite
+	
+
+I have recently worked out a framework to enable hybrid programming using Java and gnuplot. You can use tags in gnuplot code to refer to the variables/methods/expressions in Java objects. Here is a snapshot of a simple plot2d gnuplot code:
+
+$header$
+$style2d$
+set title "$info(1)$"
+plot for [i=1:$size(1)$] '-' title info2(1,i) w lp ls i
+$data2d(1)$
+
+Here, $header$ refers to the header field value in a Java Object. $info(1)$ will call the info method of a Java Object with parameter 1.
+
+Here is the corresponding java code to produce a simple plot:
+
+    JGnuplot jg = new JGnuplot();
+    Plot plot0 = new Plot() {
+        String xlabel = "'x'", ylabel = "'y'";
+    };
+    double[] x = { 1, 2, 3, 4, 5 }, y1 = { 2, 4, 6, 8, 10 }, y2 = { 3, 6, 9, 12, 15 };
+    DataTableSet dts = plot0.addNewDataTableSet("Simple plot");
+    dts.addNewDataTable("2x", x, y1);
+    dts.addNewDataTable("3x", x, y2);
+    jg.execute(plot0, jg.plot2d);
+	
+Different from other Java API for gnuplot, my framework is very light weight. And it can support all gnuplot features. Here are some key points:
+
+    very light weight (just three core Classes)
+    using tags in gnuplot code to execute functions/get fields values in Java.
+    support both synchronized and asynchronized running of gnuplot in Java. (synchronized: your java program will wait until you close the popped gnuplot window; asynchronized: you java program will not wait.)
+    capture error/normal text output of gnuplot to the java terminal
+    can read gnuplot code from xml files
+    support gnuplot code template.

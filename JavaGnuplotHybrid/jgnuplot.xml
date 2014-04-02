@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<JGnuplot>
+<!-- the symbol ~ here at beginning of each code block is cirtical! It allows the code to be loaded without evaluation $$ and ## sections. -->
+<header>~
+set macros # Enable the use of macros
+set terminal $terminal$  
+set output $output$
+set xlabel $xlabel$
+set ylabel $ylabel$
+set zlabel $zlabel$
+set xrange $xrange$
+set yrange $yrange$
+set zrange $zrange$
+info1(i)=value(sprintf("info%i",i))
+info2(i,j)=value(sprintf("info%i_%i",i,j))
+$infos()$
+$extra$
+</header>
+<style2d>~
+# define axis
+# remove border on top and right and set color to gray
+set style line 11 lc rgb '#808080' lt 1
+set border 3 back ls 11
+set tics nomirror
+# define grid
+set style line 12 lc rgb '#808080' lt 0 lw 1
+set grid back ls 12
+set termoption dashed
+# Line styles: 
+set style line 1 lc rgb "#A00000" lt 1 lw 2 pt 1
+set style line 2 lc rgb "#00A000" lt 2 lw 2 pt 6
+set style line 3 lc rgb "#5060D0" lt 3 lw 2 pt 2
+set style line 4 lc rgb "#F25900" lt 4 lw 2 pt 9
+</style2d>
+<style3d>~
+set format cb "%4.1f"
+set colorbox user size .03, .6 noborder
+set cbtics scale 0
+</style3d>
+<plot2d>~
+$header$
+$style2d$
+set title "$info(1)$"
+plot for [i=1:$size(1)$] '-' title info2(1,i) w lp ls i
+$data2d(1)$
+</plot2d>
+<plot3d>~
+$header$
+$style3d$
+set pm3d
+set title info1(1)
+splot for [i=1:$size(1)$] "-" using 1:2:3 title info2(1,i)
+$data3d(1)$
+</plot3d>
+<multiplot>~
+$header$
+$style2d$
+set multiplot layout $size()$,1
+set title "$info(1)$"
+plot for [i=1:$size(1)$] '-' title info2(1,i) w lp ls i
+$data2d(1)$
+set title "$info(2)$"
+plot for [i=1:$size(2)$] '-' title info2(2,i) w lp ls i
+$data2d(2)$
+set title "$info(3)$"
+plot for [i=1:$size(3)$] '-' title info2(3,i) w lp ls i
+$data2d(3)$
+set title "$info(4)$"
+plot for [i=1:$size(4)$] '-' title info2(4,i) w lp ls i
+$data2d(4)$
+set title "$info(5)$"
+plot for [i=1:$size(5)$] '-' title info2(5,i) w lp ls i
+$data2d(5)$
+unset multiplot
+</multiplot>
+</JGnuplot>
