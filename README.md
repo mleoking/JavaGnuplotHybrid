@@ -1,6 +1,6 @@
 ##JavaGnuplotHybrid
 
-A hybrid programming framework for writing Gnuplot code in java. 
+A hybrid programming framework for writing Gnuplot code in Java.
 
 The JavaGnuplotHybrid folder is an eclipse project. You can download and import it into your eclipse workspace.
 
