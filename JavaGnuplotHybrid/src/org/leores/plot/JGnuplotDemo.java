@@ -16,6 +16,18 @@ public class JGnuplotDemo extends Demo {
 		prepPlot();
 		return rtn;
 	}
+	
+	public void simple() {
+		JGnuplot jg = new JGnuplot();
+		Plot plot0 = new Plot() {
+			String xlabel = "'x'", ylabel = "'y'";
+		};
+		double[] x = { 1, 2, 3, 4, 5 }, y1 = { 2, 4, 6, 8, 10 }, y2 = { 3, 6, 9, 12, 15 };
+		DataTableSet dts = plot0.addNewDataTableSet("Simple plot");
+		dts.addNewDataTable("2x", x, y1);
+		dts.addNewDataTable("3x", x, y2);
+		jg.execute(plot0, jg.plot2d);
+	}
 
 	public void prepPlot() {
 		plot1 = new Plot() {//No need to declare public/protected/private for these fields.
@@ -115,10 +127,12 @@ public class JGnuplotDemo extends Demo {
 		jg.execute(plot1, jg.plotx);
 		//way2: through a sub class extending JGunplot
 		class JGnuplot2 extends JGnuplot {
-			public String myplot, rawcode;
+			public String myplot, rawcode, sFLoad2;
 
 			public boolean initialize() {
-				return U.loadFromXML(this, fi("jgnuplot2.xml"), false);
+				sFLoad2 = "jgnuplot2.xml";
+				U.copyFileFromClassPath(this, sFLoad2, sFLoad2, false);//this also works in a jar file
+				return U.loadFromXML(this, sFLoad2, false);
 			}
 		}
 		JGnuplot2 jg2 = new JGnuplot2();
@@ -126,25 +140,12 @@ public class JGnuplotDemo extends Demo {
 		jg2.execute(new Plot(), jg2.rawcode);
 	}
 
-	public void simple() {
-		JGnuplot jg = new JGnuplot();
-		Plot plot0 = new Plot() {
-			String xlabel = "'x'", ylabel = "'y'";
-		};
-		double[] x = { 1, 2, 3, 4, 5 }, y1 = { 2, 4, 6, 8, 10 }, y2 = { 3, 6, 9, 12, 15 };
-		DataTableSet dts = plot0.addNewDataTableSet("Simple plot");
-		dts.addNewDataTable("2x", x, y1);
-		dts.addNewDataTable("3x", x, y2);
-		jg.execute(plot0, jg.plot2d);
-	}
-
 	public static void main(String[] args) {
 		JGnuplotDemo jgd = new JGnuplotDemo();
-		//jgd.compile();
-		jgd.execute();
-		//jgd.terminals();
-		//jgd.plotx();
 		jgd.simple();
+		jgd.compile();
+		jgd.execute();
+		jgd.terminals();		
+		jgd.plotx();		
 	}
-
 }

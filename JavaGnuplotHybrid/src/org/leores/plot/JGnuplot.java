@@ -86,7 +86,7 @@ public class JGnuplot extends Logger {
 	}
 
 	public boolean copyLoadFromFile() {
-		U.copyFile(U.getFilePath(JGnuplot.class) + sFLoad, sFLoad, false);
+		U.copyFileFromClassPath(JGnuplot.class, sFLoad, sFLoad, false);//this also works in a jar file
 		return U.loadFromXML(this, sFLoad, false);
 	}
 
@@ -321,7 +321,5 @@ public class JGnuplot extends Logger {
 		public String data3d(String dataTableSetNum) {
 			return data(dataTableSetNum, true);
 		}
-
 	}
-
 }
