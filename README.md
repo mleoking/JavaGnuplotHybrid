@@ -1,27 +1,27 @@
 ##JavaGnuplotHybrid
 
-A hybrid programming framwork for writing gnuplot code in java.
+A hybrid programming framework for writing Gnuplot code in java.
 
 ## Demo
 
 Run the JavaGnuplotHybrid.jar inside JavaGnuplotHybrid folder to see the demo. 
 
-Before running, makre sure, you have gnuplot installed and its path included in the system variable: PATH.
+Before running, make sure, you have Gnuplot installed and its path included in the system variable: PATH.
 
 ## Description
 
-JavaGnuplotHybrid is a light-weight library for plotting data in Java using gnuplot.
+JavaGnuplotHybrid is a light-weight library for plotting data in Java using Gnuplot.
 
-This framework does not aim to implement a comprehensive sets of Java functions to cover all gnuplot features. It rather promotes hybrid programming with Java and Gnuplot. The framework only does what Java is good at: data processing, functions, variables, etc..
+This framework does not aim to implement a comprehensive sets of Java functions to cover all Gnuplot features. It rather promotes hybrid programming with Java and Gnuplot. The framework only does what Java is good at: data processing, functions, variables, etc..
 
-It keeps its footprint in gnuplot code to the minumum. So that, without this framework, you program code can be still resued in gnuplot with ease. There is no vendor lock-in.
+It keeps its footprint in Gnuplot code to the minimum. So that, without this framework, you program code can be still reused in Gnuplot with ease. There is no vendor lock-in.
 
-Thanks to this hybrid programming mode, the framework can support all features of the current and future versions of gnuplot. There is no need to worry about whether this framework can keep up with the updating speed of gnuplot. Because all necessary functions for the hybrid programming mode are done.
+Thanks to this hybrid programming mode, the framework can support all features of the current and future versions of Gnuplot. There is no need to worry about whether this framework can keep up with the updating speed of Gnuplot. Because all necessary functions for the hybrid programming mode are done.
 
 ## Example
-The framework uses tags in gnuplot code to represent variables/methods/expressions in Java. 
+The framework uses tags in Gnuplot code to represent variables/methods/expressions in Java. 
 
-Here is a simple plot2d gnuplot code using the framwork:
+Here is a simple plot2d Gnuplot code using the framework:
 
     $header$
     $style2d$
@@ -47,8 +47,8 @@ Here is the corresponding java code to produce a simple plot:
 
 * Hybrid programming with Java and Gnuplot
 * Very light weight (just three core Classes)
-* Use tags in gnuplot code to execute functions or get fields' values in Java.
-* Support both synchronized and asynchronized running of gnuplot in Java. (synchronized: your java program will wait until you close the popped gnuplot window; asynchronized: you java program will not wait.)
-* Capture error/normal text output of gnuplot to the java terminal
-* Read gnuplot code from xml files
-* Support gnuplot code template.
+* Use tags in Gnuplot code to execute functions or get fields' values in Java.
+* Support both synchronized and asynchronized running of Gnuplot in Java. (synchronized: your java program will wait until you close the popped Gnuplot window; asynchronized: you java program will not wait.)
+* Capture error/normal text output of Gnuplot to the java terminal
+* Read Gnuplot code from xml files
+* Support Gnuplot code template.
