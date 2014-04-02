@@ -2,6 +2,12 @@
 
 A hybrid programming framwork for writing gnuplot code in java.
 
+## Demo
+
+Run the JavaGnuplotHybrid.jar inside JavaGnuplotHybrid folder to see the demo. 
+
+Before running, makre sure, you have gnuplot installed and its path included in the system variable: PATH.
+
 ## Description
 
 JavaGnuplotHybrid is a light-weight library for plotting data in Java using gnuplot.
