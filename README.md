@@ -21,7 +21,7 @@ Thanks to this hybrid programming mode, the framework can support all features o
 ## Example
 The framework uses tags in Gnuplot code to represent variables/methods/expressions in Java. 
 
-Here is a simple plot2d Gnuplot code using the framework:
+Here is a simple plot2d Gnuplot code template using the framework:
 
     $header$
     $style2d$
