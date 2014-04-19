@@ -9,6 +9,8 @@ import java.util.Scanner;
 
 import org.leores.ecpt.TRuntimeException;
 import org.leores.math.Randomer;
+import org.leores.util.DataTable;
+import org.leores.util.DataTableSet;
 import org.leores.util.Logger;
 import org.leores.util.SysUtil;
 import org.leores.util.SysUtil.Command;
@@ -16,6 +18,7 @@ import org.leores.util.U;
 import org.leores.util.able.Processable2;
 
 /**
+ /**
  * We do not check the null of parameters intentionally to make the program stop
  * as soon as error occurs.
  * 
@@ -23,8 +26,9 @@ import org.leores.util.able.Processable2;
  * 
  */
 public class JGnuplot extends Logger {
-	public String header, extra, style2d, style3d;
-	public String plot2d, plot3d, multiplot, plotx;
+	public String style2d, style3d, header, extra;
+	public String beforeStyle, beforeStyleVar, afterStyleVar, afterStyle, beforeHeader, afterHeader, beforePlot;
+	public String plot2d, plot2dx, plot3d, multiplot, plotx;
 	public String numOutPattern;
 	protected String sFTemp;
 	public String sFLoad;
@@ -58,10 +62,11 @@ public class JGnuplot extends Logger {
 
 	public boolean initialize(boolean bCopyLoadFromFile) {
 		boolean rtn = false;
+		beforePlot = "";
 		sFLoad = "jgnuplot.xml";
 		Date startDate = new Date();
 		Randomer rnd = new Randomer();
-		String sFTempEnd = U.format(startDate, "-HHmm-") + Math.abs((rnd.nextInt() % 10000));
+		String sFTempEnd = U.format(startDate, "_HHmm_") + Math.abs((rnd.nextInt() % 100000));
 		sFTemp = "JGnuplotTemp" + sFTempEnd + ".plt";
 		if (bCopyLoadFromFile) {
 			rtn = copyLoadFromFile();
@@ -110,6 +115,10 @@ public class JGnuplot extends Logger {
 		}
 
 		return rtn;
+	}
+
+	public boolean compile(Plot plot, String code) {
+		return compile(plot, code, plot.info + ".plt");
 	}
 
 	protected String sCommand(String sFile, boolean bPause) {
@@ -168,11 +177,13 @@ public class JGnuplot extends Logger {
 	}
 
 	public static class Plot {
+		public String info;
 		protected List<DataTableSet> lDataTableSet;
 		protected String numOutPattern;
 		protected String sFile;
 
-		public Plot() {
+		public Plot(String info) {
+			this.info = info;
 			lDataTableSet = new ArrayList<DataTableSet>();
 		}
 
@@ -222,8 +233,13 @@ public class JGnuplot extends Logger {
 					String line = scanner.nextLine();
 					try {
 						//Those lines with invalid/null fields/methods/expressions will be cause a runtime exception here.
-						String lineEvaled = U.eval(line, this, U.EVAL_InvalidException | U.EVAL_NullException);
-						U.appendToFile(sFile, lineEvaled + "\n");
+						String lineEvaled = line;
+						for (int i = 0; i < 3; i++) {
+							lineEvaled = U.eval(lineEvaled, this, U.EVAL_InvalidException | U.EVAL_NullException);
+						}
+						if (lineEvaled.length() > 0) {
+							U.appendToFile(sFile, lineEvaled + "\n");
+						}
 						rtn = true;
 					} catch (TRuntimeException exception) {
 
@@ -280,46 +296,61 @@ public class JGnuplot extends Logger {
 					sBuffer.append("info" + (i + 1) + "_" + (j + 1) + "=\"" + dt.info + "\"\n");
 				}
 			}
-			return sBuffer.toString();
+			String sInfos = sBuffer.toString();
+			sInfos = sInfos.substring(0, sInfos.length() - 1);//remove the last line break;
+			return sInfos;
 		}
 
-		public String data(String dataTableSetNum, boolean b3d) {
+		protected void saveToFile(String sFile, DataTable dt, String type) {
+			String sLastColumn1 = null;
+			for (int i = 0, mj = dt.nRow(); i < mj; i++) {
+				Object[] row = dt.getRow(i);
+				String[] sRow = U.toStrArray(Arrays.asList(row), numOutPattern);
+				if ("3d".equals(type)) {
+					if (sLastColumn1 == null) {
+						sLastColumn1 = sRow[0];
+					}
+					if (!sLastColumn1.equals(sRow[0])) {
+						U.appendToFile(sFile, "\n");
+						sLastColumn1 = sRow[0];
+					}
+				}
+				String line = U.wrap(sRow, "", "", " ");
+				U.appendToFile(sFile, line + "\n");
+
+			}
+			U.appendToFile(sFile, "e\n");
+		}
+
+		public String data(String dataTableSetNum, String dataTableNum, String type) {
 			String rtn = null;
 			int iDataTableSet = Integer.parseInt(dataTableSetNum) - 1;
-			if (iDataTableSet >= 0 && iDataTableSet < lDataTableSet.size()) {
-				rtn = "";
+			if (iDataTableSet >= 0 && iDataTableSet < lDataTableSet.size() && type != null) {
 				DataTableSet dts = lDataTableSet.get(iDataTableSet);
-				for (int i = 0, mi = dts.size(); i < mi; i++) {
-					DataTable dt = dts.get(i);
-					String sLastColumn1 = null;
-					for (int j = 0, mj = dt.nRow(); j < mj; j++) {
-						Object[] row = dt.getRow(j);
-						String[] sRow = U.toStrArray(Arrays.asList(row), numOutPattern);
-						String line = U.wrap(sRow, "", "", " ");
-						U.appendToFile(sFile, line + "\n");
-						if (b3d) {
-							if (sLastColumn1 == null) {
-								sLastColumn1 = sRow[0];
-							}
-							if (!sLastColumn1.equals(sRow[0])) {
-								U.appendToFile(sFile, "\n");
-								sLastColumn1 = sRow[0];
-							}
-						}
-
+				if (dataTableNum == null) {
+					for (int i = 0, mi = dts.size(); i < mi; i++) {
+						DataTable dt = dts.get(i);
+						saveToFile(sFile, dt, type);
 					}
-					U.appendToFile(sFile, "e\n");
+					rtn = "";
+				} else {
+					int iDataTable = Integer.parseInt(dataTableNum) - 1;
+					if (iDataTable >= 0 && iDataTable < dts.size()) {
+						DataTable dt = dts.get(iDataTable);
+						saveToFile(sFile, dt, type);
+						rtn = "";
+					}
 				}
 			}
 			return rtn;
 		}
 
-		public String data2d(String dataTableSetNum) {
-			return data(dataTableSetNum, false);
+		public String data(String dataTableSetNum, String type) {
+			return data(dataTableSetNum, null, type);
 		}
 
-		public String data3d(String dataTableSetNum) {
-			return data(dataTableSetNum, true);
+		public String data(String dataTableSetNum) {
+			return data(dataTableSetNum, null, "2d");
 		}
 	}
 }

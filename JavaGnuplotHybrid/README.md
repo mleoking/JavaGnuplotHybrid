@@ -25,13 +25,13 @@ The framework uses tags in Gnuplot code to represent variables/methods/expressio
 
 Here is a simple plot2d Gnuplot code template using the framework:
 
-    $header$
     $style2d$
-    set title "$info(1)$"
-    plot for [i=1:$size(1)$] '-' title info2(1,i) w lp ls i
-    $data2d(1)$
+    $header$ 
+    set title "$info(1)$";
+    plot for [i=1:$size(1)$] '-' title info2(1,i) w lp ls ls(i);
+    $data(1,2d)$
 
-Here, $header$ refers to the value of the "header" field in a Java object. $info(1)$ will call the info method of a Java Object with parameter "1" (String). data2d(index) is a build-in method in the framework to output the data of the plot in 2d format.
+Here, $header$ refers to the value of the "header" field in a Java object. $info(1)$ will call the info method of a Java Object with parameter "1" (String). data(1,2d) is a build-in method in the framework to output the data of the plot in 2d format.
 
 Here is the corresponding java code to produce a simple plot:
 
@@ -54,3 +54,4 @@ Here is the corresponding java code to produce a simple plot:
 * Capture error/normal text output of Gnuplot to the java terminal
 * Read Gnuplot code from xml files
 * Support Gnuplot code template.
+* More attractive plot styles

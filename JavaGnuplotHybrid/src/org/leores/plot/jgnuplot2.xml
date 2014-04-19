@@ -2,13 +2,16 @@
 <JGnuplot2>
 <!-- the symbol ~ here at beginning of each code block is cirtical! It allows the code to be loaded without evaluation $$ and ## sections. -->
 <myplot>~
-$header$
 $style2d$
+$header$
 set title "$info(1)$"
 plot '-' title "$info(1,1)$" with lines,\
-     '-' title "$info(1,2)$" with points,\
-     '-' title "$info(1,3)$" with points;
-$data2d(1)$
+     '-' title "$info(1,100)$" with lines,\ # a non-exist datatable id 100 this line will then be ingored.
+     '-' title "$info(1,3)$" with points,\
+     '-' title "$info(1,5)$" with points;
+$data(1,1,2d)$
+$data(1,3,2d)$
+$data(1,5,2d)$
 </myplot>
 <rawcode>~
 unset border
