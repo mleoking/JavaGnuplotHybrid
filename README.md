@@ -55,3 +55,10 @@ Here is the corresponding java code to produce a simple plot:
 * Read Gnuplot code from xml files
 * Support Gnuplot code template.
 * More attractive plot styles
+
+## Example Figures:
+
+![2d](http://upload.wikimedia.org/wikipedia/en/3/34/A_typical_2d_plot_produced_using_JavaGnuplotHybrid.png)
+![3d](http://upload.wikimedia.org/wikipedia/en/c/cd/A_typical_3d_plot_produced_using_JavaGnuplotHybrid.png)
+
+
