@@ -10,7 +10,7 @@ The JavaGnuplotHybrid folder is an eclipse project. You can download and import 
 
 Before running, make sure, you have Gnuplot installed and its path included in the system variable: PATH.
 
-Windows system users can Download, unzip, and install (install.bat) the all-in-one runtime package: [**LeoTaskRunEnv**](https://github.com/mleoking/LeoTaskApp/releases/download/v1.0.0/LeoTaskRunEnv.zip)
+Windows system users can download, unzip, and install (install.bat) the all-in-one runtime package: [**LeoTaskRunEnv**](https://github.com/mleoking/LeoTaskApp/releases/download/v1.0.0/LeoTaskRunEnv.zip)
 
 ## Description
 
