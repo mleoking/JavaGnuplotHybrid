@@ -1,14 +1,16 @@
 ##JavaGnuplotHybrid
 
-A hybrid programming framework for writing Gnuplot code in java.
+A hybrid programming framework for writing Gnuplot code in java. The last version of JavaGnuplotHybrid has been intergrated into [**LeoTask**](https://github.com/mleoking/LeoTask).
 
 The JavaGnuplotHybrid folder is an eclipse project. You can download and import it into your eclipse workspace.
 
 ## Demo
 
-Run the JavaGnuplotHybrid.jar inside JavaGnuplotHybrid folder to see the demo. 
+[**Download the demo**](JavaGnuplotHybrid/JavaGnuplotHybrid.jar?raw=true). Double click the demo to run it.
 
 Before running, make sure, you have Gnuplot installed and its path included in the system variable: PATH.
+
+Windows system users can Download, unzip, and install (install.bat) the all-in-one runtime package: [**LeoTaskRunEnv**](https://github.com/mleoking/LeoTaskApp/releases/download/v1.0.0/LeoTaskRunEnv.zip)
 
 ## Description
 
