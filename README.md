@@ -26,17 +26,17 @@ Thanks to this hybrid programming mode, the framework can support all features o
 The framework uses tags in Gnuplot code to represent variables/methods/expressions in Java. 
 
 Here is a simple plot2d Gnuplot code template using the framework:
-
+```gnuplot
     $style2d$
     $header$ 
     set title "$info(1)$";
     plot for [i=1:$size(1)$] '-' title info2(1,i) w lp ls ls(i);
     $data(1,2d)$
-
+```
 Here, $header$ refers to the value of the "header" field in a Java object. $info(1)$ will call the info method of a Java Object with parameter "1" (String). data(1,2d) is a build-in method in the framework to output the data of the plot in 2d format.
 
 Here is the corresponding java code to produce a simple plot:
-
+```java
     JGnuplot jg = new JGnuplot();
     Plot plot0 = new Plot() {
         String xlabel = "'x'", ylabel = "'y'";
@@ -46,7 +46,7 @@ Here is the corresponding java code to produce a simple plot:
     dts.addNewDataTable("2x", x, y1);
     dts.addNewDataTable("3x", x, y2);
     jg.execute(plot0, jg.plot2d);
-	
+```	
 ## Features:
 
 * Hybrid programming with Java and Gnuplot
