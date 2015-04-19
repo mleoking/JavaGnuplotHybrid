@@ -60,7 +60,7 @@ Here is the corresponding java code to produce a simple plot:
 
 ## Example Figures:
 
-![2d](http://upload.wikimedia.org/wikipedia/en/3/34/A_typical_2d_plot_produced_using_JavaGnuplotHybrid.png)
-![3d](http://upload.wikimedia.org/wikipedia/en/c/cd/A_typical_3d_plot_produced_using_JavaGnuplotHybrid.png)
+![2d](https://en.wikipedia.org/wiki/JavaGnuplotHybrid#/media/File:A_typical_2d_plot_produced_using_JavaGnuplotHybrid.png)
+![3d](https://en.wikipedia.org/wiki/JavaGnuplotHybrid#/media/File:A_typical_3d_plot_produced_using_JavaGnuplotHybrid.png)
 
 
