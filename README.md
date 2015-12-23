@@ -64,3 +64,7 @@ Here is the corresponding java code to produce a simple plot:
 ![3d](https://upload.wikimedia.org/wikipedia/commons/c/cd/A_typical_3d_plot_produced_using_JavaGnuplotHybrid.png)
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mleoking/javagnuplothybrid/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
