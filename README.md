@@ -25,6 +25,7 @@ Thanks to this hybrid programming mode, the framework can support all features o
 ## Example
 
 Here is the corresponding java code to produce a simple plot:
+
 ```java
 	public void plot2d() {
 		JGnuplot jg = new JGnuplot();
@@ -42,9 +43,11 @@ Here is the corresponding java code to produce a simple plot:
 	}
 ```	
 It produces the following plot:
+
 ![2D Plot](javagnuplothybrid/doc/plot2d.png)
 
 In addition a file named _jgnuplot.xml_ is generated. It is the plot style file coded in Gnuplot script. You can modify the <plot2d> section in _jgnuplot.xml_ to change the ploting styles. The framework uses tags in _jgnuplot.xml_ to represent variables/methods/expressions in Java. Here is a simple plot2d Gnuplot code template using the framework:
+
 ```xml
 <plot2d>~
     $style2d$
@@ -54,7 +57,7 @@ In addition a file named _jgnuplot.xml_ is generated. It is the plot style file 
     $data(1,2d)$
 </plot2d>
 ```
-Here, $header$ refers to the value of the "header" field in a Java object. $info(1)$ will call the info method of a Java Object with parameter "1" (String). data(1,2d) is a build-in method in the framework to output the data of the plot in 2d format.
+Here, $style2d$ and $header$ refers to the style2d and header sections in the  _jgnuplot.xml_. $info(1)$ calls the built-in function of _public String info(String dataTableSetNum)_ in JGnuplot.java with the parameter of "1" to output the "2D Plot" text in the previous example java code. $data(1,2d)$ is a build-in method in the framework to output the data of the plot in 2d format.
 
 [Click here for more examples](javagnuplothybrid/doc/examples.md)
 
