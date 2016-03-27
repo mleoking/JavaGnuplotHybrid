@@ -53,7 +53,7 @@ In addition a file named _jgnuplot.xml_ is generated. It is the plot style file 
     $style2d$
     $header$ 
     set title "$info(1)$";
-    $bp$$bp2$plot for [i=1:$size(1)$] '-' title info2(1,i) w lp ls ls(i);
+    plot for [i=1:$size(1)$] '-' title info2(1,i) w lp ls ls(i);
     $data(1,2d)$
 </plot2d>
 ```
