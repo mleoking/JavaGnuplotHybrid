@@ -6,7 +6,7 @@ The JavaGnuplotHybrid folder is an eclipse project. You can download and import 
 
 ## Demo
 
-[**Download the demo**](JavaGnuplotHybrid/JavaGnuplotHybrid.jar?raw=true). Double click the demo to run it.
+[**Download the demo**](javagnuplothybrid/demo/javagnuplothybrid.jar?raw=true). Double click the demo to run it.
 
 Before running, make sure, you have Gnuplot installed and its path included in the system variable: PATH.
 
@@ -46,7 +46,7 @@ It produces the following plot:
 
 ![2D Plot](javagnuplothybrid/doc/plot2d.png)
 
-In addition a file named _jgnuplot.xml_ is generated. It is the plot style file coded in Gnuplot script. You can modify the <plot2d> section in _jgnuplot.xml_ to change the ploting styles. The framework uses tags in _jgnuplot.xml_ to represent variables/methods/expressions in Java. Here is a simple plot2d Gnuplot code template using the framework:
+In addition a file named _jgnuplot.xml_ is generated. It is the plot style file coded in Gnuplot script. You can modify the _plot2d_ section in _jgnuplot.xml_ to change the ploting styles. The framework uses tags warped in $$ in _jgnuplot.xml_ to represent variables/methods/expressions in Java. Here is a simple _plot2d_ section:
 
 ```xml
 <plot2d>~
@@ -57,7 +57,7 @@ In addition a file named _jgnuplot.xml_ is generated. It is the plot style file 
     $data(1,2d)$
 </plot2d>
 ```
-Here, $style2d$ and $header$ refers to the style2d and header sections in the  _jgnuplot.xml_. $info(1)$ calls the built-in function of _public String info(String dataTableSetNum)_ in JGnuplot.java with the parameter of "1" to output the "2D Plot" text in the previous example java code. $data(1,2d)$ is a build-in method in the framework to output the data of the plot in 2d format.
+Here, $style2d$ and $header$ refers to the style2d and header sections in the _jgnuplot.xml_. $info(1)$ calls the built-in function of _public String info(String dataTableSetNum)_ in [JGnuplot.java](javagnuplothybrid/src/org/leores/plot/JGnuplot.java) with the parameter of "1" to output the "2D Plot" text in the previous example java code. $data(1,2d)$ is a build-in method in [JGnuplot.java](javagnuplothybrid/src/org/leores/plot/JGnuplot.java) to output the data of the plot in 2d format.
 
 [Click here for more examples](javagnuplothybrid/doc/examples.md)
 
