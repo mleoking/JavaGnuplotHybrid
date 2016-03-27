@@ -42,19 +42,17 @@ Here is the corresponding java code to produce a simple plot:
 	}
 ```	
 It produces the following plot:
-![2D Plot](doc/plot2d.png)
+![2D Plot](javagnuplothybrid/doc/plot2d.png)
 
-
-jgnuplot.xml
-
-The framework uses tags in Gnuplot code to represent variables/methods/expressions in Java. 
-Here is a simple plot2d Gnuplot code template using the framework:
-```java
+In addition a file named _jgnuplot.xml_ is generated. It is the plot style file coded in Gnuplot script. You can modify the <plot2d> section in _jgnuplot.xml_ to change the ploting styles. The framework uses tags in _jgnuplot.xml_ to represent variables/methods/expressions in Java. Here is a simple plot2d Gnuplot code template using the framework:
+```xml
+<plot2d>~
     $style2d$
     $header$ 
     set title "$info(1)$";
-    plot for [i=1:$size(1)$] '-' title info2(1,i) w lp ls ls(i);
+    $bp$$bp2$plot for [i=1:$size(1)$] '-' title info2(1,i) w lp ls ls(i);
     $data(1,2d)$
+</plot2d>
 ```
 Here, $header$ refers to the value of the "header" field in a Java object. $info(1)$ will call the info method of a Java Object with parameter "1" (String). data(1,2d) is a build-in method in the framework to output the data of the plot in 2d format.
 
