@@ -4,7 +4,7 @@ A hybrid programming framework for writing Gnuplot code in java. The latest vers
 
 The JavaGnuplotHybrid folder is an eclipse project. You can download and import it into your eclipse workspace.
 
-[**Download the demo**](javagnuplothybrid/demo/javagnuplothybrid.jar?raw=true)|[See the examples](javagnuplothybrid/doc/examples.md)
+[**Download the demo**](javagnuplothybrid/demo/javagnuplothybrid.jar?raw=true)|[**See the examples**](javagnuplothybrid/doc/examples.md)
 
 ## Demo
 
@@ -61,7 +61,7 @@ In addition a file named _jgnuplot.xml_ is generated. It is the plot style file 
 ```
 Here, $style2d$ and $header$ refers to the style2d and header sections in the _jgnuplot.xml_. $info(1)$ calls the built-in function of _public String info(String dataTableSetNum)_ in [JGnuplot.java](javagnuplothybrid/src/org/leores/plot/JGnuplot.java) with the parameter of "1" to output the "2D Plot" text in the previous example java code. $data(1,2d)$ calls the build-in method _public String data(String dataTableSetNum, String type)_ in [JGnuplot.java](javagnuplothybrid/src/org/leores/plot/JGnuplot.java) to output the data of the plot in 2d format.
 
-[Click here for more examples](javagnuplothybrid/doc/examples.md)
+[**Click here for more examples**](javagnuplothybrid/doc/examples.md)
 
 ## Features:
 
