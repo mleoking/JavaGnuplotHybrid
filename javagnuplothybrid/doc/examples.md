@@ -2,7 +2,7 @@
 
 ## 2D Plot
 
-![2D Plot](javagnuplothybrid/demo/plot2d.png)
+![2D Plot](plot2d.png)
 
 ```java
 	public void plot2d() {
