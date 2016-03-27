@@ -8,7 +8,7 @@ The JavaGnuplotHybrid folder is an eclipse project. You can download and import 
 
 ## Demo
 
-[**Download the demo**](javagnuplothybrid/demo/javagnuplothybrid.jar?raw=true) Double click the demo to run it. [Here is the code of the demo](javagnuplothybrid/src/org/leores/demo/JGnuplotDemo.java).
+[Download the demo](javagnuplothybrid/demo/javagnuplothybrid.jar?raw=true) Double click the demo to run it. [Here is the code of the demo](javagnuplothybrid/src/org/leores/demo/JGnuplotDemo.java).
 
 Before running, make sure, you have Gnuplot installed and its path included in the system variable: PATH.
 
