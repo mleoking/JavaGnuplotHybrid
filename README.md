@@ -23,8 +23,31 @@ It keeps its footprint in Gnuplot code to the minimum. So that, without this fra
 Thanks to this hybrid programming mode, the framework can support all features of the current and future versions of Gnuplot. There is no need to worry about whether this framework can keep up with the updating speed of Gnuplot. Because all necessary functions for the hybrid programming mode are done.
 
 ## Example
-The framework uses tags in Gnuplot code to represent variables/methods/expressions in Java. 
 
+Here is the corresponding java code to produce a simple plot:
+```java
+	public void plot2d() {
+		JGnuplot jg = new JGnuplot();
+		Plot plot = new Plot("") {
+			{
+				xlabel = "x";
+				ylabel = "y";
+			}
+		};
+		double[] x = { 1, 2, 3, 4, 5 }, y1 = { 2, 4, 6, 8, 10 }, y2 = { 3, 6, 9, 12, 15 };
+		DataTableSet dts = plot.addNewDataTableSet("2D Plot");
+		dts.addNewDataTable("y=2x", x, y1);
+		dts.addNewDataTable("y=3x", x, y2);
+		jg.execute(plot, jg.plot2d);
+	}
+```	
+It produces the following plot:
+![2D Plot](doc/plot2d.png)
+
+
+jgnuplot.xml
+
+The framework uses tags in Gnuplot code to represent variables/methods/expressions in Java. 
 Here is a simple plot2d Gnuplot code template using the framework:
 ```java
     $style2d$
@@ -35,18 +58,8 @@ Here is a simple plot2d Gnuplot code template using the framework:
 ```
 Here, $header$ refers to the value of the "header" field in a Java object. $info(1)$ will call the info method of a Java Object with parameter "1" (String). data(1,2d) is a build-in method in the framework to output the data of the plot in 2d format.
 
-Here is the corresponding java code to produce a simple plot:
-```java
-    JGnuplot jg = new JGnuplot();
-    Plot plot0 = new Plot() {
-        String xlabel = "'x'", ylabel = "'y'";
-    };
-    double[] x = { 1, 2, 3, 4, 5 }, y1 = { 2, 4, 6, 8, 10 }, y2 = { 3, 6, 9, 12, 15 };
-    DataTableSet dts = plot0.addNewDataTableSet("Simple plot");
-    dts.addNewDataTable("2x", x, y1);
-    dts.addNewDataTable("3x", x, y2);
-    jg.execute(plot0, jg.plot2d);
-```	
+[Click here for more examples](javagnuplothybrid/doc/examples.md)
+
 ## Features:
 
 * Hybrid programming with Java and Gnuplot
