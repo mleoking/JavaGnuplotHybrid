@@ -6,12 +6,7 @@
 
 ```java
 	public void plot2d() {
-		JGnuplot jg = new JGnuplot() {
-			{
-				terminal = "pngcairo enhanced dashed";
-				output = "plot2d.png";
-			}
-		};
+		JGnuplot jg = new JGnuplot();
 		Plot plot = new Plot("") {
 			{
 				xlabel = "x";
@@ -32,12 +27,7 @@
 
 ```java
 	public void plot2dBar() {
-		JGnuplot jg = new JGnuplot() {
-			{
-				terminal = "pngcairo enhanced dashed";
-				output = "plot2dBar.png";
-			}
-		};
+		JGnuplot jg = new JGnuplot();
 		Plot plot = new Plot("") {
 			{
 				xlabel = "x";
@@ -60,12 +50,7 @@
 
 ```java
 	public void plot3d() {
-		JGnuplot jg = new JGnuplot() {
-			{
-				terminal = "pngcairo enhanced dashed";
-				output = "plot3d.png";
-			}
-		};
+		JGnuplot jg = new JGnuplot();
 		Plot plot = new Plot("") {
 			{
 				xlabel = "x";
@@ -87,12 +72,7 @@
 
 ```java
 	public void plotDensity() {
-		JGnuplot jg = new JGnuplot() {
-			{
-				terminal = "pngcairo enhanced dashed";
-				output = "plotDensity.png";
-			}
-		};
+		JGnuplot jg = new JGnuplot();
 		Plot plot = new Plot("") {
 			{
 				xlabel = "x";
@@ -121,12 +101,7 @@
 
 ```java
 	public void plotImage() {
-		JGnuplot jg = new JGnuplot() {
-			{
-				terminal = "pngcairo enhanced dashed";
-				output = "plotImage.png";
-			}
-		};
+		JGnuplot jg = new JGnuplot();
 		Plot plot = new Plot("") {
 			{
 				xlabel = "x";
