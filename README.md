@@ -81,8 +81,3 @@ Here, $style2d$ and $header$ refers to the style2d and header sections in the _j
 ![2d](https://upload.wikimedia.org/wikipedia/commons/3/34/A_typical_2d_plot_produced_using_JavaGnuplotHybrid.png)
 ![3d](https://upload.wikimedia.org/wikipedia/commons/c/cd/A_typical_3d_plot_produced_using_JavaGnuplotHybrid.png)
 
-
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mleoking/javagnuplothybrid/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
