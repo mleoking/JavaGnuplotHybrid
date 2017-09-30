@@ -1,4 +1,4 @@
-##JavaGnuplotHybrid
+# JavaGnuplotHybrid
 
 A hybrid programming framework for writing Gnuplot code in java.
 
