@@ -1,4 +1,4 @@
-##JavaGnuplotHybrid Examples
+## JavaGnuplotHybrid Examples
 
 ## 2D Plot
 
